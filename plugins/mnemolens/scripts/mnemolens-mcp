@@ -17,16 +17,12 @@ if [ -x "$SERVER_DIR/.venv/bin/python" ]; then
 fi
 
 cat >&2 <<EOF
-Mnemolens server dependencies are not installed.
-
-Install them once with:
-  $PLUGIN_DIR/scripts/bootstrap
-
-Preferred path:
-  Install uv, then run the bootstrap script.
-
-Fallback path:
-  The bootstrap script creates $SERVER_DIR/.venv and installs the server package there.
+uv was not found and the Mnemolens server environment is not installed.
+Creating a plugin-local Python virtual environment now.
 EOF
 
-exit 1
+python3 -m venv "$SERVER_DIR/.venv" >&2
+"$SERVER_DIR/.venv/bin/python" -m pip install --upgrade pip >&2
+"$SERVER_DIR/.venv/bin/python" -m pip install -e "$SERVER_DIR" >&2
+export PYTHONPATH="$SERVER_DIR${PYTHONPATH:+:$PYTHONPATH}"
+exec "$SERVER_DIR/.venv/bin/python" -m mnemolens.server

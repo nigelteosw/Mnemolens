@@ -15,7 +15,28 @@ agent long-term memory.
 - [Context record lifecycle](docs/memory-lifecycle.md)
 - [MCP API](docs/mcp-api.md)
 
-## First-Time Local Setup
+## Install From GitHub
+
+After this repo is pushed to GitHub, users can add the Mnemolens marketplace directly:
+
+```bash
+codex plugin marketplace add nigelteosw/Mnemolens
+```
+
+Then restart Codex and install or enable the `Mnemolens` plugin from that marketplace.
+
+The plugin still runs locally because the MCP server and SQLite database live on the
+user's machine. GitHub is only the distribution path. On first start, the launcher uses
+`uv` when available; otherwise it creates a plugin-local virtual environment and installs
+the server package automatically.
+
+The default SQLite database path is:
+
+```bash
+~/.codex/mnemolens/mnemolens.sqlite3
+```
+
+## Local Development Setup
 
 Preferred:
 
@@ -57,9 +78,9 @@ Run tests with:
 make test
 ```
 
-## Use With Codex
+## Use With A Local Checkout
 
-This repo includes a local Codex plugin marketplace entry:
+For local development, this repo also includes a Codex plugin marketplace entry:
 
 ```bash
 .agents/plugins/marketplace.json
@@ -71,15 +92,14 @@ The marketplace points Codex at:
 plugins/mnemolens
 ```
 
-First install the server dependencies:
+To preinstall the server dependencies:
 
 ```bash
 make bootstrap
 ```
 
-Then restart Codex from this repo so it can discover the local marketplace. Install or
-enable the `Mnemolens` plugin in Codex. Codex will start the MCP server through the
-plugin config:
+Then restart Codex from this repo so it can discover the local marketplace, and install
+or enable the `Mnemolens` plugin. Codex starts the MCP server through the plugin config:
 
 ```bash
 plugins/mnemolens/scripts/mnemolens-mcp
@@ -113,10 +133,4 @@ SELECT id, category, confidence, content
 FROM memories
 ORDER BY created_at DESC
 LIMIT 20;
-```
-
-The default SQLite database path is:
-
-```bash
-~/.codex/mnemolens/mnemolens.sqlite3
 ```
