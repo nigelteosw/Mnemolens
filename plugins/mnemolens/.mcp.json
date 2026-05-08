@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mnemolens": {
+      "command": "./scripts/mnemolens-mcp",
+      "args": [],
+      "env": {}
+    }
+  }
+}

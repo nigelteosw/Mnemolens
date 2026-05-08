@@ -1,0 +1,43 @@
+{
+  "name": "mnemolens",
+  "version": "0.1.0",
+  "description": "Local memory workbench for Codex with SQLite-backed recall, traces, and cleanup reports.",
+  "author": {
+    "name": "Nigel Teo",
+    "email": "nigelteosw@gmail.com",
+    "url": ""
+  },
+  "homepage": "https://github.com/nigelteosw/Mnemolens",
+  "repository": "https://github.com/nigelteosw/Mnemolens",
+  "license": "MIT",
+  "keywords": [
+    "memory",
+    "mcp",
+    "codex",
+    "sqlite",
+    "observability"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Mnemolens",
+    "shortDescription": "Inspectable local memory for Codex.",
+    "longDescription": "Mnemolens gives Codex a local SQLite memory layer with hybrid retrieval, candidate memories, retrieval traces, and reviewable cleanup reports.",
+    "developerName": "Nigel Teo",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Memory",
+      "Local"
+    ],
+    "websiteURL": "https://github.com/nigelteosw/Mnemolens",
+    "privacyPolicyURL": "https://github.com/nigelteosw/Mnemolens",
+    "termsOfServiceURL": "https://github.com/nigelteosw/Mnemolens",
+    "defaultPrompt": [
+      "Search Mnemolens memories for this workspace before making this change.",
+      "Show me the memories retrieved for this task.",
+      "Run /dream and summarize the cleanup report."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

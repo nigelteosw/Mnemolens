@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SERVER_DIR="$PLUGIN_DIR/server"
+
+if command -v uv >/dev/null 2>&1; then
+  echo "Using uv to create the Mnemolens server environment..."
+  exec uv sync --project "$SERVER_DIR"
+fi
+
+echo "uv was not found. Falling back to a plugin-local Python virtual environment."
+python3 -m venv "$SERVER_DIR/.venv"
+"$SERVER_DIR/.venv/bin/python" -m pip install --upgrade pip
+"$SERVER_DIR/.venv/bin/python" -m pip install -e "$SERVER_DIR"
+
+echo "Mnemolens server environment is ready."

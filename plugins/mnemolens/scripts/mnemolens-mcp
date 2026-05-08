@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SERVER_DIR="$PLUGIN_DIR/server"
+
+export MNEMOLENS_DB_PATH="${MNEMOLENS_DB_PATH:-$HOME/.codex/mnemolens/mnemolens.sqlite3}"
+
+if command -v uv >/dev/null 2>&1; then
+  export PYTHONPATH="$SERVER_DIR${PYTHONPATH:+:$PYTHONPATH}"
+  exec uv run --project "$SERVER_DIR" python -m mnemolens.server
+fi
+
+if [ -x "$SERVER_DIR/.venv/bin/python" ]; then
+  export PYTHONPATH="$SERVER_DIR${PYTHONPATH:+:$PYTHONPATH}"
+  exec "$SERVER_DIR/.venv/bin/python" -m mnemolens.server
+fi
+
+cat >&2 <<EOF
+Mnemolens server dependencies are not installed.
+
+Install them once with:
+  $PLUGIN_DIR/scripts/bootstrap
+
+Preferred path:
+  Install uv, then run the bootstrap script.
+
+Fallback path:
+  The bootstrap script creates $SERVER_DIR/.venv and installs the server package there.
+EOF
+
+exit 1
