@@ -1,8 +1,11 @@
 {
   "mcpServers": {
     "mnemolens": {
-      "command": "./scripts/mnemolens-mcp",
-      "args": [],
+      "command": "/bin/sh",
+      "args": [
+        "-lc",
+        "for script in \"$HOME\"/.codex/.tmp/marketplaces/*/plugins/mnemolens/scripts/mnemolens-mcp; do if [ -x \"$script\" ]; then exec \"$script\"; fi; done; echo \"Mnemolens launcher was not found in the Codex marketplace cache.\" >&2; exit 127"
+      ],
       "env": {}
     }
   }

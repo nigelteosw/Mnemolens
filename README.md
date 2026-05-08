@@ -30,6 +30,12 @@ user's machine. GitHub is only the distribution path. On first start, the launch
 `uv` when available; otherwise it creates a plugin-local virtual environment and installs
 the server package automatically.
 
+To pull a newer version after this marketplace has already been added:
+
+```bash
+codex plugin marketplace upgrade mnemolens
+```
+
 The default SQLite database path is:
 
 ```bash

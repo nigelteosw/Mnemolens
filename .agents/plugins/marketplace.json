@@ -1,7 +1,7 @@
 {
-  "name": "mnemolens-local",
+  "name": "mnemolens",
   "interface": {
-    "displayName": "Mnemolens Local Plugins"
+    "displayName": "Mnemolens"
   },
   "plugins": [
     {

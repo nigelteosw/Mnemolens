@@ -38,6 +38,12 @@ only the distribution path.
 On first start, the launcher uses `uv` when available. Without `uv`, it creates a
 plugin-local virtual environment and installs the server package automatically.
 
+To pull a newer version after this marketplace has already been added:
+
+```bash
+codex plugin marketplace upgrade mnemolens
+```
+
 ## First-Time Local Development
 
 Preferred path with `uv`:
