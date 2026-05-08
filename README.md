@@ -15,33 +15,6 @@ agent long-term memory.
 - [Context record lifecycle](docs/memory-lifecycle.md)
 - [MCP API](docs/mcp-api.md)
 
-## Install From GitHub
-
-After this repo is pushed to GitHub, users can add the Mnemolens marketplace directly:
-
-```bash
-codex plugin marketplace add nigelteosw/Mnemolens
-```
-
-Then restart Codex and install or enable the `Mnemolens` plugin from that marketplace.
-
-The plugin still runs locally because the MCP server and SQLite database live on the
-user's machine. GitHub is only the distribution path. On first start, the launcher uses
-`uv` when available; otherwise it creates a plugin-local virtual environment and installs
-the server package automatically.
-
-To pull a newer version after this marketplace has already been added:
-
-```bash
-codex plugin marketplace upgrade mnemolens
-```
-
-The default SQLite database path is:
-
-```bash
-~/.codex/mnemolens/mnemolens.sqlite3
-```
-
 ## Local Development Setup
 
 Preferred:
@@ -86,17 +59,7 @@ make test
 
 ## Use With A Local Checkout
 
-For local development, this repo also includes a Codex plugin marketplace entry:
-
-```bash
-.agents/plugins/marketplace.json
-```
-
-The marketplace points Codex at:
-
-```bash
-plugins/mnemolens
-```
+The plugin lives at `plugins/mnemolens`.
 
 To preinstall the server dependencies:
 
@@ -104,8 +67,7 @@ To preinstall the server dependencies:
 make bootstrap
 ```
 
-Then restart Codex from this repo so it can discover the local marketplace, and install
-or enable the `Mnemolens` plugin. Codex starts the MCP server through the plugin config:
+Codex starts the MCP server through the plugin config:
 
 ```bash
 plugins/mnemolens/scripts/mnemolens-mcp

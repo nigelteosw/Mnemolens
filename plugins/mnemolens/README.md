@@ -23,27 +23,6 @@ The plugin starts the server through:
 plugins/mnemolens/scripts/mnemolens-mcp
 ```
 
-## Install From GitHub
-
-After the repository is published, users can add the marketplace directly:
-
-```bash
-codex plugin marketplace add nigelteosw/Mnemolens
-```
-
-Then restart Codex and install or enable the `Mnemolens` plugin. The plugin runs locally:
-the MCP server is started on the user's machine and stores data in local SQLite. GitHub is
-only the distribution path.
-
-On first start, the launcher uses `uv` when available. Without `uv`, it creates a
-plugin-local virtual environment and installs the server package automatically.
-
-To pull a newer version after this marketplace has already been added:
-
-```bash
-codex plugin marketplace upgrade mnemolens
-```
-
 ## First-Time Local Development
 
 Preferred path with `uv`:
